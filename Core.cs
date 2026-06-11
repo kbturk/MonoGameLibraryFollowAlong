@@ -2,6 +2,8 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using MonogameLibrary.Input;
 
 namespace MonogameLibrary;
 
@@ -31,6 +33,16 @@ public class Core : Game
     /// Gets the content manager used to load global assets.
     /// </summary>
     public static new ContentManager Content { get; private set; }
+
+    ///<summary>
+    /// Gets the reference to the input management system.
+    /// </summary>
+    public static InputManager Input {get; private set;}
+
+    ///<summary>
+    /// Gets or Sets a value that indicates if the game should exit when the esc key on the keyboard is pushed.
+    /// </summary>
+    public static bool ExitOnEscape {get; set;}
 
     /// <summary>
     /// Creates a new Core instance.
@@ -73,6 +85,9 @@ public class Core : Game
 
         // Mouse is visible by default.
         IsMouseVisible = true;
+
+        // Exist on escape in true by default
+        ExitOnEscape = true;
     }
 
     protected Vector2 Middle()
@@ -90,5 +105,21 @@ public class Core : Game
 
         // Create the sprite batch instance.
         SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+        //create new input namager.
+        Input = new InputManager();
+    }
+
+    protected override void Update(GameTime gameTime)
+    {
+        // Update the input manager.
+        Input.Update(gameTime);
+
+        if (ExitOnEscape && Input.Keyboard.WasKeyJustPressed(Keys.Escape))
+        {
+            Exit();
+        }
+
+        base.Update(gameTime);
     }
 }

@@ -16,6 +16,7 @@ public class Animation
     ///<summary>
     ///The amount of time to delay between each frame before moving to the next
     ///frame for this animation.
+    ///</summary>
     public TimeSpan Delay { get; set; }
 
     ///<summary>
