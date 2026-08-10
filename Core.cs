@@ -176,8 +176,11 @@ public class Core : Game
 
     public static void TransitionScene()
     {
+
         if (s_activeScene != null)
+        {
             s_activeScene.Dispose();
+        }
 
         // Force the garbage collector to collect to ensure memory is cleared.
         GC.Collect();
@@ -189,7 +192,10 @@ public class Core : Game
         s_nextScene = null;
 
         if (s_activeScene != null)
+        {
             s_activeScene.Initialize();
+        }
+
     }
 
 
