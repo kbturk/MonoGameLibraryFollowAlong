@@ -12,3 +12,10 @@ Review the Scene classes. Move those into the library as well (if needed.)
 
 There's a bug where when you come back from the options screen, bot the start
 and options buttons have handles.
+
+Look up EventHandler class. I'm not that familiar with the workings of it.
+
+The slime body is different then the head.
+The color of the slime changes during the animation??
+
+Fix the Options text and add an exit button on the home page.
