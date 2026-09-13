@@ -15,6 +15,11 @@ public abstract class Scene : IDisposable
     /// </remarks>
     protected ContentManager Content {get;}
 
+    ///<summary>
+    /// Provide a link to the core instance for exit.
+    /// </summary>
+    protected Core s_instance {get;}
+
     /// <summary>
     /// Gets the value that indicates if the scene has been disposed of.
     /// </summary>
@@ -29,8 +34,9 @@ public abstract class Scene : IDisposable
         Content = new ContentManager(Core.Content.ServiceProvider);
 
         // Set the root directory for content to the same as the root directory
-        // for the game's conent.
+        // for the game's content.
         Content.RootDirectory = Core.Content.RootDirectory;
+        s_instance = Core.s_instance;
     }
 
     // Finalizer, called when object is cleaned up by garbage collector.

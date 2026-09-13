@@ -148,7 +148,6 @@ public class TextureAtlas
         TextureAtlas atlas = new TextureAtlas();
 
         string filePath = Path.Combine(content.RootDirectory, fileName);
-        Console.WriteLine($"Hello! {filePath}");
         using (Stream stream = TitleContainer.OpenStream(filePath))
         {
             using (XmlReader reader = XmlReader.Create(stream))
